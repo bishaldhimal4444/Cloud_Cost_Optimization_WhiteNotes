@@ -22,7 +22,6 @@ NAT Gateways have the following pricing dimensions:
 -	Determine whether the resources sending most of the traffic to NAT Gateway are in the same Availability Zone as the NAT Gateway. If they are not, then route the traffic to a NAT Gateway in the same AZ to reduce cross-AZ data transfer charges.
 -	Identify top contributors to traffic charges going through NAT Gateways. Consider enabling VPC Flow Logs, and then leverage CloudWatch Log Insights.
 -	Inter-AZ Traffic:
-  
             o	Resources sending traffic to NAT Gateways can be placed in the same AZs as their NAT Gateway to avoid traffic crossing AZs and incurring costs.
             o	It's recommended to check the route tables of the subnets in which those resources are created, and ensure that NAT Gateways in those route tables are in the same AZ. The ultimate goal is to get the traffic from private subnets flow "vertically" where possible.
 -	Data Transfer Out:
