@@ -97,3 +97,14 @@ Data ingestion and archival charges for vended logs apply when you publish flow 
 - Turn on flow logs for REJECT or ACCEPT. Capturing traffic in both directions implies higher volume of logs & cost.
 - For S3 VPC flows logs delivery, use the default text format. Parquet format comes with an additional charge per GB.
 - Consider checking idle VPC endpoints and discover whether they are needed based on each use case given that they could be deleted if no traffic is going through them.
+
+#### Public IPv4
+When you launch an instance in a default VPC, AWS assigns it a public IP address by default. When you launch an instance into a non-default VPC, the subnet has an attribute that determines whether instances launched into that subnet receive a public IP address from the public IPv4 address pool. By default, a public IP address is not assigned to instances launched in a non-default subnet. There is a charge per IP per hour for all public IPv4 addresses.
+
+##### Public IPv4 Optimization Techniques
+
+- Assess which resources must be deployed in public subnets and require individual public IPv4 addresses. Resources like databases or container services can be deployed in private subnets, without being exposed directly to the Internet. This will help you optimize the number of public IPv4 addresses associated with your resources.
+- For remote access to resources within your VPCs, consider using EC2 Instance Connect (EIC) Endpoints instead of assigning public IPv4 addresses to each resource. This will help you optimize the number of public IPv4 addresses associated with your resources and improve your security posture.
+- For inbound internet traffic, consider using Elastic Load Balancers or AWS Global Accelerator. These services help you increase the availability and performance of your workloads while optimizing public IPv4 utilization. When assessing the use of ELBs or AWS Global Accelerator, consider your architecture and traffic profiles.
+- Consider disabling the auto-assignment of public IPv4 addresses on default subnets.
+- For outbound internet traffic, NAT Gateways can help you optimize public IPv4 address utilization. NAT gateway offers you the capability to perform source address translation at scale, in each Availability Zone. When assessing the use of NAT Gateway, consider your architecture and traffic profiles.
