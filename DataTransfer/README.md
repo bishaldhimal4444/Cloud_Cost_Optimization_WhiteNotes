@@ -35,7 +35,6 @@ DT for AWS Direct Connect is charged as follows:
 
 ##### 1.	DT Internet
 ###### -	Amazon CloudFront 
-  
       o	If you need to transfer data externally, CloudFront can be a secure and cost-efficient solution. Evaluate your DT traffic patterns and volume to determine if it's the right choice for your scenario 
 
       o	CloudFront Security Savings bundle: you can save up to 30% on your CloudFront bill in exchange for a set monthly spend commitment over a one-year term. 
