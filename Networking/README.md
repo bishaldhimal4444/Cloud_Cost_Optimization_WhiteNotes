@@ -174,3 +174,16 @@ Resolver endpoints can be one of the biggest expenses within Route 53 when you h
 - Leverage AWS Organizations for sharing resolver rules.
 
 ### Note's:
+**1. You organization uses load balancers to deliver web services to your customers. You've recently discovered that there are multiple load balancers that have no active back-end instances. What is the quickest way to identify idle load balancers?**
+- AWS Trusted Advisor
+
+**2. You found out from your bill that you are charged for Data Transfer between multiple AWS Regions that you know you don't use (you don't have any resources in those regions). You would like to investigate the source and destination of the traffic (source IP, destination IP, source port, and destination port) to narrow down troubleshooting and learn who is connecting to your resources. Which tools can help you with this exercise?**
+- VPC Flow Logs
+
+**3. The client utilizes a three-tier architecture, with the Web tier located in a public subnet, and the Application and Database tiers in private subnets. The instances hosted in the Application tier require secure access to objects in S3 bucket in the same region. What would be the cost-effective solution to achieve this?**
+- Gateway endpoint
+
+**4. While analyzing network traffic within a VPC, you find that most traffic flowing through a NAT Gateway is going to S3. Which of the following can help reduce cost in this scenario?**
+- Gateway endpoint
+
+
