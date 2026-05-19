@@ -62,5 +62,23 @@ Customers use Amazon Redshift to modernize their data analytics workloads and de
 **- Amazon Redshift Reserved Nodes:** If you intend to keep your Redshift cluster running continuously for a prolonged period, you should consider purchasing reserved node offering. These offerings provide significant savings over on-demand pricing, but they require you to commit to paying for a certain amount of usage for either a one-year or three-year duration in return for a discount. Reserved nodes are a billing concept that is used to determine the rate at which you are charged for nodes. Reserving a node does not actually create any nodes for you. You are charged for reserved nodes regardless of usage, which means that you must pay for each node that you reserve for the whole duration of the term, whether or not you have any Redshift nodes in a running cluster to which the discounted rate applies.
 
 
+### 4. Amazon Managed Streaming for Apache Kafka
+Amazon Managed Streaming for Apache Kafka (Amazon MSK) makes it easy to ingest and process streaming data in real time with fully managed Apache Kafka. It is good for ingesting and processing log and event streams, running centralized state or data buses and to power your event-driven systems.
 
+##### Amazon Managed Streaming for Apache Kafka Pricing
+
+You pay an hourly rate for Apache Kafka broker instance usage (billed at one-second resolution), with varying fees depending on the size of the broker instance and active brokers in your Amazon MSK clusters. You also pay for the amount of storage you provision in your cluster. You are not charged for data transfer between brokers or between Apache ZooKeeper nodes and brokers. You will pay standard AWS data transfer charges for data transferred in and out of Amazon MSK clusters.
+
+#### Amazon Managed Streaming for Apache Kafka Optimization
+**Rightsizing your cluster:** You can size your clusters to meet your throughput, availability, and latency requirements. For the implementation details, can out the Best practices for right-sizing your Apache Kafka clusters to optimize performance and cost blog post, which also provides answers to questions such as when you should scale up versus scale out, and guidance on how to continuously verify the size of your production clusters.
+
+**Manage Data retention:** You can use different data retention strategies to reduce your storage costs by using data retention parameters on a cluster or topic level. Adjust log data retention parameters:
+- Log data retention on Provisioned MSK Clusters at the cluster level
+- Topic retention parameters
+
+**Configure tiered storage on Provisioned MSK Clusters:** You can create an Amazon MSK cluster configured with tiered storage that balances performance and cost. Amazon MSK stores streaming data in a performance-optimized primary storage tier until it reaches the Apache Kafka topic retention limits. Then, Amazon MSK automatically moves data into the new low-cost storage.
+
+**Reduce network traffic costs:** 
+- By default, Amazon MSK sets the brocker.rack parameter automatically according to the Availability Zone in which it is deployed. For example, when you deploy a three-node MSK cluster across three Availability Zones, each node has a different broker.rack setting. When you deploy a six-node MSK cluster across three Availability Zones, you have a total of three unique broker.rack values.
+- By default, Kafka consumers retrieve data from the leader of a partition, which could be in a different rack, or Availability Zone. Using Amazon MSK 2.4.1.1 or above, you can modify both broker and consumer's configuration to allow consumers to fetch data from the closest replica, using client.rack parameter on the consumers and replica.selector.class on the brokers, to avoid cross-AZ traffic costs.
 
