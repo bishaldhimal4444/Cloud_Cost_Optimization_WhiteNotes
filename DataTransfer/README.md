@@ -17,17 +17,19 @@ An overview of techniques for managing and optimizing data transfer costs across
 -	When resources within the same AZ communicate while using Private IP, then DT is free.
 -	When resources within the same AZ communicate while using Public IP, you are charged for DT.
 
-#### Data Transfer in Amazon CloudFront
+#### 4. DT in Amazon CloudFront
 
  DT for CloudFront is charged as follows:
 -	Up to 1Tb of DT-OUT per month is free (under Free Tier)
 -	DT from the origin/aws-region to edge location is free
 -	DT from CloudFront edge location to the origin/aws-region (aws backend resource) is charged depending on the location
 
-#### Data Transfer in AWS Direct Connect
+#### 5. DT in AWS Direct Connect
 DT for AWS Direct Connect is charged as follows:
 -	DT Out from AWS Region to AWS Direct Connect location is charged depending on the region and location
 -	DT In from AWS Direct Connect location into AWS is free
+
+
 
 ## Data Transfer/DT Optimization Ways:
 
@@ -53,7 +55,6 @@ DT for AWS Direct Connect is charged as follows:
 ##### 2.	DT between AWS Region/Inter-Region
 -	Avoid cross-region data transfer unless your business case requires it.
 -	Place your S3 buckets in a region where most of your other resources are located to minimize unnecessary data movements across the global network.
-
 
 ##### 3.	DT within an AWS Regioin/Inter-AZ
 -	DT between resources within the same AZ is free when using private IPs.
