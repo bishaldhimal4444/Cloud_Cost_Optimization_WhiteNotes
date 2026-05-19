@@ -1,18 +1,18 @@
-## Data Transfer: 
+## Data Transfer (DT): 
 An overview of techniques for managing and optimizing data transfer costs across AWS services and regions.
 
-#### Types of Data Transfer (DT):
+### Types of Data Transfer (DT):
 
-###### 1.	DT Internet 
+##### 1.	DT Internet 
 -	cost for DT-OUT to the internet depends on the AWS regions(from which region, data is out).
 -	up to 100 Gb of DT-OUT per month is free (under Free Tier)
 -	DT-IN from the internet is free.
 
-###### 2.	DT between AWS Regions
+##### 2.	DT between AWS Regions
 -	DT-OUT pricing to another AWS region depends on the originating region.
 -	DT-IN from another AWS region is free.
 
-###### 3.	DT within as AWS Region
+##### 3.	DT within as AWS Region
 -	When resources in different AZ’s of the same AWS region communicate, you are charged for both DT-IN and DT-OUT.
 -	When resources within the same AZ communicate while using Private IP, then DT is free.
 -	When resources within the same AZ communicate while using Public IP, you are charged for DT.
@@ -29,7 +29,7 @@ DT for AWS Direct Connect is charged as follows:
 -	DT Out from AWS Region to AWS Direct Connect location is charged depending on the region and location
 -	DT In from AWS Direct Connect location into AWS is free
 
-#### Data Transfer/DT Optimization Ways:
+## Data Transfer/DT Optimization Ways:
 
 ##### 1.	DT Internet
 ###### -	Amazon CloudFront 
@@ -66,20 +66,20 @@ DT for AWS Direct Connect is charged as follows:
 
 
 
-#### Notes:
+### Notes:
 **1.	Your organization runs a global web application using Amazon CloudFront and AWS Web Application Firewall (WAF). The application will be running for, at least, the next 12 months. What is the most effective way to optimize CloudFront charges?**
 -	Purchase a Security Savings Bundle (The CloudFront Security Savings Bundle is a flexible self-service pricing plan that helps you save up to 30% on your CloudFront bill in exchange for making a commitment to a consistent amount of monthly usage (e.g. $100/month) for a 1 year term. As an added benefit, AWS WAF (Web Application Firewall) usage, up to 10% of your committed plan amount, to protect CloudFront resources is included at no additional charge)
 
-2.	Your organization has a high demand application with a global customer base. The data is stored in an S3 bucket and is served to external customers. The current architecture has a high cost to transfer data from S3 to your customers. What AWS service could you use to reduce the data transfer cost?
+**2.	Your organization has a high demand application with a global customer base. The data is stored in an S3 bucket and is served to external customers. The current architecture has a high cost to transfer data from S3 to your customers. What AWS service could you use to reduce the data transfer cost?**
 -	Amazon CloudFront (CloudFront is designed to deliver static and dynamic content to end users cost-efficiently, providing improved performance and reduced latency through its global network of edge locations)
 
-3.	You have a simple application that's running on three Amazon EC2 instances and transfers data to and from Amazon S3 buckets. After checking S3 pricing page you verify that data transfer between EC2 and S3 within the same region should be free. However, you still see data transfer charges on your bill. What could be the reason for these charges?
+**3.	You have a simple application that's running on three Amazon EC2 instances and transfers data to and from Amazon S3 buckets. After checking S3 pricing page you verify that data transfer between EC2 and S3 within the same region should be free. However, you still see data transfer charges on your bill. What could be the reason for these charges?**
 -	Your S3 bucket is in a different AWS Region from your EC2 instances
 -	Your EC2 instance is in a public subnet and sends traffic to S3 bucket via Internet Gateway
 (S3 is a regional service. Have resources within the VPC connect to the S3 bucket in the same region via Gateway VPC Endpoints to avoid unnecessary data transfer charges)
 
-4.	While analyzing network traffic within a VPC, you found that most of the traffic flowing through a NAT Gateway is going to your S3 bucket within the same region. Which of the following can help reduce NAT Gateway charges in this scenario?
+**4.	While analyzing network traffic within a VPC, you found that most of the traffic flowing through a NAT Gateway is going to your S3 bucket within the same region. Which of the following can help reduce NAT Gateway charges in this scenario?**
 -	Gateway VPC endpoint (Have resources within the VPC connect to the S3 bucket in the same region via Gateway VPC Endpoints to avoid unnecessary data transfer charges)
 
-5.	Your organization has an S3 bucket that they need to replicate to another region for disaster recovery purposes. What type of data transfer cost will your organization incur?
+**5.	Your organization has an S3 bucket that they need to replicate to another region for disaster recovery purposes. What type of data transfer cost will your organization incur?**
 -	Data Transfer between AWS Regions (Data transferred from one AWS Region to another is charged depending on the pricing of the originating region.)
