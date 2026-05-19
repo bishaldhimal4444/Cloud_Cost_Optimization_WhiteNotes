@@ -30,9 +30,11 @@ NAT Gateways have the following pricing dimensions:
                 o Evaluate if there is a legitimate use case and business reason for the traffic that your instances are sending out to the internet.
                 o It's recommended to place resources in private subnets where possible, including resources sending legitimate traffic out to the internet. Depending on the destination of the traffic (for example, if the destination for your traffic is within AWS), consider using PrivateLink, so the traffic wouldn't cross a NAT Gateway or Internet Gateway to reach its target. After carefully checking on security and compliance implications, you can then evaluate placing those resources in a public subnet.
 -	Idle NAT Gateways:
+  
         o	Consider checking unused NAT Gateways.
         o	Discover whether they are needed based on each use case given that they could be deleted if no traffic is going through them.
 
 -	NAT Gateway data processing cost:
+  
       o	An important cost component for NAT Gateways is the amount of traffic they process.
       o	If the workload running in your private subnet is reaching S3 or DynamoDB in the same region through NAT Gateway, then set up a gateway VPC endpoint and modify the corresponding VPC route table to route traffic to and from the AWS resource through the gateway VPC endpoint, rather than through the NAT Gateway.
