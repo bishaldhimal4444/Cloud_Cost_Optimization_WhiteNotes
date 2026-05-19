@@ -9,7 +9,9 @@ With per query billing, you can get started quickly and pay only for the data sc
 
 #### Amazon Athena Optimization Techniques
 **- Partition your data:** Partitioning divides your table into parts and keeps the related data together based on column values such as date, country, and region. You can restrict the amount of data scanned by a query by specifying filters based on the partition
+
 **- Use compression:** Compressing your data can speed up your queries significantly. Smaller chunks of data reduce the data scanned from Amazon S3, resulting in lower costs of running queries. It also reduces the network traffic from Amazon S3 to Athena. Parquet and ORC files are splittable because these formats compress sections of the files separately, and have metadata that contains the locations within the files for the different sections. The GZIP format provides good compression ratios and has a wide range support across other tools and services.
+
 **- Query tuning:** The Athena SQL engine is built on the open source distributed query engines Trino and Presto. Understanding how it works provides insight into how you can optimize queries when running them. Recommended best practices are:
 - Optimize 'ORDER BY '
 - Optimize joins
