@@ -36,5 +36,31 @@ EMR price is added to the Amazon EC2 cost - the price for the underlying instanc
 
 **- Partitioning and File Compression on S3:** Partitioning your data on S3 can help optimize your EMR costs by reducing the amount of data read and processed during each query. This can be especially important for large datasets. File compression can also help reduce the amount of data read and processed during queries. Common compression formats include GZIP and snappy.
 
+### 3. Amazon Redshift
+Customers use Amazon Redshift to modernize their data analytics workloads and deliver insights for their businesses. With a fully managed, AI powered, massively parallel processing (MPP) architecture, Amazon Redshift drives business decision making quickly and cost effectively.
+
+###### Amazon Redshift Pricing
+
+- Amazon Redshift node types: Choose the best cluster configuration and node type for your needs, and pay for capacity by the hour with Amazon Redshift on-demand pricing. When you choose on-demand pricing, you can use the pause and resume feature to suspend on-demand billing when a cluster is not in use.
+- You can also choose Reserved nodes instead of on-demand instances for steady-state workloads and get significant discounts over on-demand pricing.
+- Amazon Redshift Spectrum pricing: Run SQL queries directly against the data in your Amazon S3 data lake, out to exabytes -- you simply pay for the number of bytes scanned.
+- Concurrency Scaling pricing: Each cluster earns up to one hour of free Concurrency Scaling credits per day, which is sufficient for 97% of customers. This enables you to provide consistently fast performance, even with thousands of concurrent queries and users. You simply pay a per-second on-demand rate for usage that exceeds the free credits.
+- RMS pricing: Pay only for the data you store in RA3 clusters, independent of the number of compute nodes provisioned. You simply pay hourly for the total amount of data in managed storage. RMS is also used with Amazon Redshift Serverless.
+- Redshift ML: Use SQL to create, train, and deploy machine learning (ML) models. After you exhaust the free tier for Amazon SageMaker, you will incur costs for creating your model and storage. Redshift ML is also available for use with Amazon Redshift Serverless.
+
+##### Amazon Redshift Optimization
+**- Amazon Redshift Managed Storage:** (Relevant when using RA3 nodes or Serverless) Managed storage comes exclusively with RA3 node types, and you pay the same low rate for Redshift managed storage regardless of data size. Usage of managed storage is calculated hourly based on the total data present in the managed storage. You can monitor the amount of data in your RA3 cluster via Amazon CloudWatch or the AWS Management Console. You do not pay for any data transfer charges between RA3 nodes and managed storage. Managed storage charges do not include back up storage charges due to automated and manual snapshots (see more information in the documentation on Backup Storage). Once the cluster is terminated, you will continue to be charged for the retention of your manual backups. Example for RMS cost calculation can be found on the Redshift pricing page.
+
+**- Pause and Resume Amazon Redshift:** Pause clusters which do not need to be up 24x7. Shut down underutilized or development workloads on weekends/weeknights. This feature is available through the console or Redshift API.
+
+**- Underutilized Amazon Redshift Clusters:** Review underutilized Redshift clusters in AWS Trusted Advisor and terminate if not required. Depending on your analysis of the cluster utilization metrics, you can either shut it down after taking a final snapshot, or downsize it.
+
+**- Redshift Spectrum:** Redshift Spectrum allows you to directly run SQL queries against exabytes of data in Amazon S3. This is charged per terabyte of data scanned. You can control your Spectrum costs by configuring usage limits.
+
+**- Amazon Redshift Serverless:** Easily run analytics workloads of any size without managing data warehouse infrastructure. Developers, data scientists, and data analysts can work across data warehouses and data lakes to build reporting and dashboarding applications, perform real-time analytics, collaborate on data, and build and train machine learning (ML) models. You pay only for what you use. Redshift Serverless offers flexibility to support a diverse set of workloads of varying complexity, starting at a low price point.
+
+**- Amazon Redshift Reserved Nodes:** If you intend to keep your Redshift cluster running continuously for a prolonged period, you should consider purchasing reserved node offering. These offerings provide significant savings over on-demand pricing, but they require you to commit to paying for a certain amount of usage for either a one-year or three-year duration in return for a discount. Reserved nodes are a billing concept that is used to determine the rate at which you are charged for nodes. Reserving a node does not actually create any nodes for you. You are charged for reserved nodes regardless of usage, which means that you must pay for each node that you reserve for the whole duration of the term, whether or not you have any Redshift nodes in a running cluster to which the discounted rate applies.
+
+
 
 
