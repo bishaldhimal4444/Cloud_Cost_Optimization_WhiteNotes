@@ -31,7 +31,7 @@ DT for AWS Direct Connect is charged as follows:
 
 #### Data Transfer/DT Optimization Ways:
 
-1.	DT Internet
+###### 1.	DT Internet
 -	Amazon CloudFront 
   
 o	If you need to transfer data externally, CloudFront can be a secure and cost-efficient solution. Evaluate your DT traffic patterns and volume to determine if it's the right choice for your scenario 
@@ -49,4 +49,20 @@ o	Interface VPC endpoints allow private and secure access to AWS services, your 
 
 -	AWS Direct Connect
 o	Use Direct Connect when sending data to on-premises networks. AWS Direct Connect can reduce network costs, increase bandwidth throughput, and provide a more consistent network experience than internet-based connections.
+
+###### 2.	DT between AWS Region/Inter-Region
+-	Avoid cross-region data transfer unless your business case requires it.
+-	Place your S3 buckets in a region where most of your other resources are located to minimize unnecessary data movements across the global network.
+
+
+###### 3.	DT within an AWS Regioin/Inter-AZ
+-	DT between resources within the same AZ is free when using private IPs.
+-	DT between Application Load Balancers (ALB) and backend resources (e.g. EC2 instances) within the same AWS Region is free.
+-	Use resources within the same AZ where possible.
+-	DT over a VPC peering connection that stays within an AZ is free.
+-	Some multi-AZ configurations for replication purposes are exempt from charges when replicating data across AZs. These include: Amazon Aurora, Amazon Neptune, and Amazon RDS. Use private IPs where possible for resources when sending traffic between them.
+-	Use Gateway VPC Endpoints for S3 and DynamoDB.
+-	Place NAT Gateway in the same AZ with the backend instances where possible
+
+
 
