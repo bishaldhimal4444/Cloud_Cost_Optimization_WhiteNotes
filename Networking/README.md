@@ -38,3 +38,5 @@ NAT Gateways have the following pricing dimensions:
   
       o	An important cost component for NAT Gateways is the amount of traffic they process.
       o	If the workload running in your private subnet is reaching S3 or DynamoDB in the same region through NAT Gateway, then set up a gateway VPC endpoint and modify the corresponding VPC route table to route traffic to and from the AWS resource through the gateway VPC endpoint, rather than through the NAT Gateway.
+
+  
