@@ -67,7 +67,7 @@ DT for AWS Direct Connect is charged as follows:
 
 
 #### Notes:
-1.	Your organization runs a global web application using Amazon CloudFront and AWS Web Application Firewall (WAF). The application will be running for, at least, the next 12 months. What is the most effective way to optimize CloudFront charges?
+**1.	Your organization runs a global web application using Amazon CloudFront and AWS Web Application Firewall (WAF). The application will be running for, at least, the next 12 months. What is the most effective way to optimize CloudFront charges?**
 -	Purchase a Security Savings Bundle (The CloudFront Security Savings Bundle is a flexible self-service pricing plan that helps you save up to 30% on your CloudFront bill in exchange for making a commitment to a consistent amount of monthly usage (e.g. $100/month) for a 1 year term. As an added benefit, AWS WAF (Web Application Firewall) usage, up to 10% of your committed plan amount, to protect CloudFront resources is included at no additional charge)
 
 2.	Your organization has a high demand application with a global customer base. The data is stored in an S3 bucket and is served to external customers. The current architecture has a high cost to transfer data from S3 to your customers. What AWS service could you use to reduce the data transfer cost?
