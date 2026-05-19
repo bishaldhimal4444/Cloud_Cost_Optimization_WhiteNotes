@@ -39,4 +39,12 @@ NAT Gateways have the following pricing dimensions:
         o	An important cost component for NAT Gateways is the amount of traffic they process.
         o	If the workload running in your private subnet is reaching S3 or DynamoDB in the same region through NAT Gateway, then set up a gateway VPC endpoint and modify the corresponding VPC route table to route traffic to and from the AWS resource through the gateway VPC endpoint, rather than through the NAT Gateway.
 
+
+#### Amazon VPC IP Address Manager (IPAM)
+With Amazon VPC IP Address Manager (IPAM) you pay an hourly rate for each active IP address that you manage using IPAM.
+#### IPAM Optimization Techniques
+- Consider employing IPAM only in production environments, where a tighter control or management of CIDRs is needed.
+- IPAM only in select operating regions.
+- Monitor IPAM costs to ensure business value is being delivered for the proportionate cost.
+- Use IP prefix allocation - VPC allows you to assign IPv4 and IPv6 prefixes to your EC2 instances, enabling you to scale and simplify the management of your container and networking applications that require multiple IP addresses on an instance. IPAM counts the whole delegation (16 IP addresses) as a single IP address, thus optimizing cost.
   
