@@ -40,15 +40,15 @@ DT for AWS Direct Connect is charged as follows:
 
       o	If you have a public-facing service that delivers content like videos or audio files, utilizing CloudFront can be beneficial 
 
--	AWS PrivateLink
-o	With AWS PrivateLink you can establish private connection between your VPCs, or even with the VPC in another AWS account, without using internet gateway.
+###### -	AWS PrivateLink
+      o	With AWS PrivateLink you can establish private connection between your VPCs, or even with the VPC in another AWS account, without using internet gateway.
 
-o	Gateway VPC endpoints allow communication to Amazon S3 and Amazon DynamoDB without requiring an internet gateway or a NAT device. There is no additional charge for using gateway endpoints.
+      o	Gateway VPC endpoints allow communication to Amazon S3 and Amazon DynamoDB without requiring an internet gateway or a NAT device. There is no additional charge for using gateway endpoints.
 
-o	Interface VPC endpoints allow private and secure access to AWS services, your internal applications, or SaaS services that are running outside of your VPC. Interface endpoints incur hourly service charges and data transfer charges.
+      o	Interface VPC endpoints allow private and secure access to AWS services, your internal applications, or SaaS services that are running outside of your VPC. Interface endpoints incur hourly service charges and data transfer charges.
 
--	AWS Direct Connect
-o	Use Direct Connect when sending data to on-premises networks. AWS Direct Connect can reduce network costs, increase bandwidth throughput, and provide a more consistent network experience than internet-based connections.
+###### -	AWS Direct Connect
+      o	Use Direct Connect when sending data to on-premises networks. AWS Direct Connect can reduce network costs, increase bandwidth throughput, and provide a more consistent network experience than internet-based connections.
 
 ##### 2.	DT between AWS Region/Inter-Region
 -	Avoid cross-region data transfer unless your business case requires it.
