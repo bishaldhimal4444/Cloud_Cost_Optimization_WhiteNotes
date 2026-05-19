@@ -1,7 +1,7 @@
-## Networking:
+# Networking:
 Best practice guidance for monitoring and optimizing cost of commonly used core networking services and features.
 
-#### 1. Amazon VPC:
+### 1. Amazon VPC:
 **-	Gateway VPC endpoints:** Provide reliable connectivity to Amazon S3 or Amazon DynamoDB without requiring an internet gateway or a NAT device for your VPC. Gateway endpoints do not use AWS PrivateLink, unlike other types of VPC endpoints. There is no additional charge for using gateway endpoints.
 **-	Interface VPC endpoints:** You can use interface endpoints to privately and securely access AWS services, internal application services or SaaS services that are running outside of your VPC.
 
@@ -10,7 +10,7 @@ Best practice guidance for monitoring and optimizing cost of commonly used core 
 -	Check for idle VPC Endpoints to find out if they are needed based on each use case given that they could be deleted if no traffic is going through them.
 -	As the number of VPCs in your account grows, centralizing the interface endpoints might be more cost-efficient (please note this does not work with gateway endpoints).
 
-#### 2. Network Address Translation (NAT) Gateway
+### 2. Network Address Translation (NAT) Gateway
 NAT Gateways have the following pricing dimensions:
 
 -	Price per NAT Gateway ($/hour): Each hour that your NAT Gateway is provisioned and available.
@@ -40,7 +40,7 @@ NAT Gateways have the following pricing dimensions:
         o	If the workload running in your private subnet is reaching S3 or DynamoDB in the same region through NAT Gateway, then set up a gateway VPC endpoint and modify the corresponding VPC route table to route traffic to and from the AWS resource through the gateway VPC endpoint, rather than through the NAT Gateway.
 
 
-#### 3. Amazon VPC IP Address Manager (IPAM)
+### 3. Amazon VPC IP Address Manager (IPAM)
 With Amazon VPC IP Address Manager (IPAM) you pay an hourly rate for each active IP address that you manage using IPAM.
 ###### IPAM Optimization Techniques
 - Consider employing IPAM only in production environments, where a tighter control or management of CIDRs is needed.
@@ -48,7 +48,7 @@ With Amazon VPC IP Address Manager (IPAM) you pay an hourly rate for each active
 - Monitor IPAM costs to ensure business value is being delivered for the proportionate cost.
 - Use IP prefix allocation - VPC allows you to assign IPv4 and IPv6 prefixes to your EC2 instances, enabling you to scale and simplify the management of your container and networking applications that require multiple IP addresses on an instance. IPAM counts the whole delegation (16 IP addresses) as a single IP address, thus optimizing cost.
 
-#### 4. Network Analysis
+### 4. Network Analysis
 **Traffic Mirroring:**
 
 If you choose to enable traffic mirroring on Amazon EC2 Instance elastic network interfaces (ENIs), ENI owner pays hourly for each ENI that is enabled with traffic mirroring. If you no longer wish to be charged for traffic mirroring, delete the traffic mirroring session associated to the instance/ENI using the AWS Management Console, command line interface, or API.
@@ -98,7 +98,7 @@ Data ingestion and archival charges for vended logs apply when you publish flow 
 - For S3 VPC flows logs delivery, use the default text format. Parquet format comes with an additional charge per GB.
 - Consider checking idle VPC endpoints and discover whether they are needed based on each use case given that they could be deleted if no traffic is going through them.
 
-#### Public IPv4
+### 5. Public IPv4
 When you launch an instance in a default VPC, AWS assigns it a public IP address by default. When you launch an instance into a non-default VPC, the subnet has an attribute that determines whether instances launched into that subnet receive a public IP address from the public IPv4 address pool. By default, a public IP address is not assigned to instances launched in a non-default subnet. There is a charge per IP per hour for all public IPv4 addresses.
 
 ##### Public IPv4 Optimization Techniques
@@ -108,3 +108,47 @@ When you launch an instance in a default VPC, AWS assigns it a public IP address
 - For inbound internet traffic, consider using Elastic Load Balancers or AWS Global Accelerator. These services help you increase the availability and performance of your workloads while optimizing public IPv4 utilization. When assessing the use of ELBs or AWS Global Accelerator, consider your architecture and traffic profiles.
 - Consider disabling the auto-assignment of public IPv4 addresses on default subnets.
 - For outbound internet traffic, NAT Gateways can help you optimize public IPv4 address utilization. NAT gateway offers you the capability to perform source address translation at scale, in each Availability Zone. When assessing the use of NAT Gateway, consider your architecture and traffic profiles.
+
+
+### 6. Amazon API Gateway
+Amazon API Gateway is a fully managed Serverless service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
+
+##### Amazon API Gateway Optimization Techniques
+
+There are three types of APIs - REST, HTTP and WebSocket - each with a different cost structure:
+
+- REST APIs have a larger set of features compared to HTTP APIs, and are also more expensive than HTTP APIs. Use REST APIs when you require their whole feature set.
+- HTTP APIs have a reduced feature set compared to REST APIs and a lower price. They should be used only when a reduced feature set is acceptable for your use case.
+- WebSocket APIs are used with long-lived connections. Their price depends on two dimensions: the number of messages, and the time the connection is open regardless of the traffic. These APIs are intended to be used when a WebSocket two-way communication is needed. Give special consideration to the time dimension, as it carries a cost even if no messages are sent.
+
+### 7. AWS Transit Gateway (TGW)
+AWS Transit Gateway (TGW) is a network transit hub that you can use to interconnect your VPCs and on-premises networks. As your cloud infrastructure expands globally, inter-region peering connects transit gateways together using the AWS Global Infrastructure. Your data is automatically encrypted and never travels over the public internet.
+
+You are charged for the number of attachments, connections that you make to the TGW per hour and the amount of traffic that flows through AWS Transit Gateway.
+
+##### AWS Transit Gateway Optimization Techniques
+**- Use VPC peering for simple setups:** For workloads where the data remains in the same AZ, there's no data transfer charges.
+**- Avoid sending large amounts of data via TGWs:** Sending terabytes of data over TGWs can increase your cost. For these types of scenarios, consider gateway VPC endpoints or other services, such as AWS DataSync.
+**- Use TGW to share NAT Gateway between VPCs:** Each VPC or VPN attachment is associated with a single route table; the route table decides the next hop for the traffic coming from that resource attachment; a route table inside the TGW allows for both IPv4 or IPv6 CIDR and targets; the targets are VPCs and VPN connections.
+**- Delete unused TGW attachments:** Each TGW attachment is charged for hourly usage & processed data; if your workload does not require connectivity via TGW for all VPCs, Direct Connect links, VPNs or VPC Peering Connections, consider removing the attachments.
+
+### 8. Elastic Load Balancing (ELB)
+Elastic Load Balancers (ELB) automatically distribute incoming application traffic across multiple targets and virtual appliances in one or more Availability Zones (AZs). ELB offers four types of load balancers, all featuring high availability, automatic scaling, and robust security support for your applications: Application Load Balancer, Network Load Balancer, Gateway Load Balancer, and Classic Load Balancer. You only pay for what you use.
+
+Limiting the number of unused ELBs across AZs can reduce data transfer costs and hourly ELB cost. Select appropriate subnets with instances to lower cost for even distribution of traffic across nodes. Review impact and proceed carefully.
+
+##### ELB Optimization Techniques
+- Disable ELBs with no backend instances, or no healthy backend instances.
+- Align ELBs with AZs containing backend instances.
+- Review cross-zone (inter-AZ) ELB usage.
+- Review ELBs with high Data Transfer Out charges, and consider CDN (CloudFront)
+
+### 9. Virtual Private Network (VPN)
+**- AWS Client VPN:** AWS Client VPN is used by your remote workforce to securely access resources both on AWS and within your on-premises networks.
+**- Site-To-Site VPN:** AWS Site-to-Site VPN creates encrypted connections between your locations (such as data centers and remote offices) and your AWS resources.
+
+##### VPN Optimization Techniques:
+- Ensure that only relevant traffic is traversing the VPN.
+- Optimize costs by removing unused VPN resources.
+- Delete VPN connections if they were provisioned and have no associated tunnels.
+- Evaluate carefully if they are used for DR.
