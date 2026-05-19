@@ -5,7 +5,7 @@ Best practice guidance for monitoring and optimizing cost of commonly used core 
 **-	Gateway VPC endpoints:** Provide reliable connectivity to Amazon S3 or Amazon DynamoDB without requiring an internet gateway or a NAT device for your VPC. Gateway endpoints do not use AWS PrivateLink, unlike other types of VPC endpoints. There is no additional charge for using gateway endpoints.
 **-	Interface VPC endpoints:** You can use interface endpoints to privately and securely access AWS services, internal application services or SaaS services that are running outside of your VPC.
 
-###### Amazon VPC Optimization Techniques
+##### Amazon VPC Optimization Techniques
 -	For workloads within the same region, if your destination service is either S3 or DynamoDB, utilize Gateway endpoints if possible.
 -	Check for idle VPC Endpoints to find out if they are needed based on each use case given that they could be deleted if no traffic is going through them.
 -	As the number of VPCs in your account grows, centralizing the interface endpoints might be more cost-efficient (please note this does not work with gateway endpoints).
@@ -17,7 +17,7 @@ NAT Gateways have the following pricing dimensions:
 -	Price per GB data processed ($/GB): Each gigabyte of data that it processed, regardless of the traffic’s source or destination.
 -	Data Transfer charges ($/GB-month): There’s an additional indirect factor, which is Data Transfer charges.
 
-###### NAT Gateway Optimization Techniques
+##### NAT Gateway Optimization Techniques
 -	Determine whether the majority of your NAT Gateway charges are from traffic to AWS regional services (Amazon S3, Amazon DynamoDB, Amazon Kinesis, Amazon SQS, Amazon CloudWatch, etc.) and route that traffic to and from those services using VPC endpoints.
 -	Determine whether the resources sending most of the traffic to NAT Gateway are in the same Availability Zone as the NAT Gateway. If they are not, then route the traffic to a NAT Gateway in the same AZ to reduce cross-AZ data transfer charges.
 -	Identify top contributors to traffic charges going through NAT Gateways. Consider enabling VPC Flow Logs, and then leverage CloudWatch Log Insights.
@@ -42,7 +42,7 @@ NAT Gateways have the following pricing dimensions:
 
 ### 3. Amazon VPC IP Address Manager (IPAM)
 With Amazon VPC IP Address Manager (IPAM) you pay an hourly rate for each active IP address that you manage using IPAM.
-###### IPAM Optimization Techniques
+##### IPAM Optimization Techniques
 - Consider employing IPAM only in production environments, where a tighter control or management of CIDRs is needed.
 - IPAM only in select operating regions.
 - Monitor IPAM costs to ensure business value is being delivered for the proportionate cost.
@@ -128,8 +128,11 @@ You are charged for the number of attachments, connections that you make to the 
 
 ##### AWS Transit Gateway Optimization Techniques
 **- Use VPC peering for simple setups:** For workloads where the data remains in the same AZ, there's no data transfer charges.
+
 **- Avoid sending large amounts of data via TGWs:** Sending terabytes of data over TGWs can increase your cost. For these types of scenarios, consider gateway VPC endpoints or other services, such as AWS DataSync.
+
 **- Use TGW to share NAT Gateway between VPCs:** Each VPC or VPN attachment is associated with a single route table; the route table decides the next hop for the traffic coming from that resource attachment; a route table inside the TGW allows for both IPv4 or IPv6 CIDR and targets; the targets are VPCs and VPN connections.
+
 **- Delete unused TGW attachments:** Each TGW attachment is charged for hourly usage & processed data; if your workload does not require connectivity via TGW for all VPCs, Direct Connect links, VPNs or VPC Peering Connections, consider removing the attachments.
 
 ### 8. Elastic Load Balancing (ELB)
@@ -152,3 +155,22 @@ Limiting the number of unused ELBs across AZs can reduce data transfer costs and
 - Optimize costs by removing unused VPN resources.
 - Delete VPN connections if they were provisioned and have no associated tunnels.
 - Evaluate carefully if they are used for DR.
+
+### 10. Amazon Route53
+Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. Route 53 connects user requests to internet applications running on AWS or on-premises.
+
+##### Amazon Route 53 Optimization Techniques
+- Implement caching in DNS clients.
+- Use Alias record when possible.
+- Review the use of latency-based record sets.
+- Leverage AWS Resource Access Manager (RAM) sharing.
+
+Resolver endpoints can be one of the biggest expenses within Route 53 when you have many accounts. Considerations when merging Route 53 Resolver endpoints:
+
+- You need resolver endpoints in each region that you use.
+- Consider usage of current endpoints and the impact on service quotas for resolver endpoints. Specifically, the queries per second per IP address in an endpoint.
+- Look at the metrics for Route 53 Resolver endpoints.
+- Identify common resolver rules and share those across accounts to reduce the need for endpoints in each account and on each VPC.
+- Leverage AWS Organizations for sharing resolver rules.
+
+### Note's:
