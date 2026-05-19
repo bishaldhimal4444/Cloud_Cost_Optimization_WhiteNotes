@@ -82,3 +82,16 @@ You pay an hourly rate for Apache Kafka broker instance usage (billed at one-sec
 - By default, Amazon MSK sets the brocker.rack parameter automatically according to the Availability Zone in which it is deployed. For example, when you deploy a three-node MSK cluster across three Availability Zones, each node has a different broker.rack setting. When you deploy a six-node MSK cluster across three Availability Zones, you have a total of three unique broker.rack values.
 - By default, Kafka consumers retrieve data from the leader of a partition, which could be in a different rack, or Availability Zone. Using Amazon MSK 2.4.1.1 or above, you can modify both broker and consumer's configuration to allow consumers to fetch data from the closest replica, using client.rack parameter on the consumers and replica.selector.class on the brokers, to avoid cross-AZ traffic costs.
 
+### Note's:
+**1. You have been running a workload with EMR and want to reduce the cost. You are considering using a commitment discount but do not want to pay upfront for it. What is your best option for this?**
+- Saving Plans
+
+**2. Which statement about MSK Data Transfer pricing is true?**
+- You are not charged for data transfer between brokers
+
+**3. A customer requires an auto-scaling data warehouse for variable workloads. What is the most cost-effective service for this?**
+- Amazon Redshift Serverless
+
+
+
+
