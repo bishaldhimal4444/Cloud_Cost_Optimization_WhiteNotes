@@ -23,8 +23,8 @@ NAT Gateways have the following pricing dimensions:
 -	Identify top contributors to traffic charges going through NAT Gateways. Consider enabling VPC Flow Logs, and then leverage CloudWatch Log Insights.
 -	Inter-AZ Traffic:
   
-              o	Resources sending traffic to NAT Gateways can be placed in the same AZs as their NAT Gateway to avoid traffic crossing AZs and incurring costs.
-              o	It's recommended to check the route tables of the subnets in which those resources are created, and ensure that NAT Gateways in those route tables are in the same AZ. The ultimate goal is to get the traffic from private subnets flow "vertically" where possible.
+  o	Resources sending traffic to NAT Gateways can be placed in the same AZs as their NAT Gateway to avoid traffic crossing AZs and incurring costs.
+  o	It's recommended to check the route tables of the subnets in which those resources are created, and ensure that NAT Gateways in those route tables are in the same AZ. The ultimate goal is to get the traffic from private subnets flow "vertically" where possible.
 -	Data Transfer Out:
                 o	Evaluate if there is a legitimate use case and business reason for the traffic that your instances are sending out to the internet.
                 o	It's recommended to place resources in private subnets where possible, including resources sending legitimate traffic out to the internet. Depending on the destination of the traffic (for example, if the destination for your traffic is within AWS), consider using PrivateLink, so the traffic wouldn't cross a NAT Gateway or Internet Gateway to reach its target. After carefully checking on security and compliance implications, you can then evaluate placing those resources in a public subnet.
