@@ -18,3 +18,23 @@ With per query billing, you can get started quickly and pay only for the data sc
 - Optimize 'GROUP BY '
 - Use approximate functions
 - Only include the columns that you need
+
+### 2. Amazon Elastic Map Reduce (EMR)
+Amazon EMR is the industry-leading cloud big data solution for petabyte-scale data processing, interactive analytics, and machine learning using open-source frameworks such as Apache Spark, Apache Hive, and Presto.
+
+###### Amazon EMR Pricing
+EMR price is added to the Amazon EC2 cost - the price for the underlying instances and Amazon EBS volumes. There is a variety of EC2 pricing options you can choose from, including On-Demand, Reserved Instances, Savings Plans, and Spot instances. Spot Instances are a spare EC2 capacity available at a discounted rate. See Spot Instance price savings versus On Demand by filtering for "Instance types supported by EMR" on the Spot Instance Advisor page.
+
+#### Amazon EMR Optimization
+**- Reserved Instances:** Reserved Instances are a cost-saving option that offers you to commit to running a certain amount of resources (such as instances) for one or three years, in return for a discounted rate. When you launch an EMR cluster, you can benefit from RI discount if the attributes of the underlying EC2 instances match the attributes of your active RIs. Keep in mind that RI discounts only apply to the EC2 instances, and not to other resources like EBS or S3.
+
+**- Saving Plans:** Saving Plans provide flexible pricing that is based on a commitment to use a specific amount of compute resources over a period of one or three years. To use Saving Plans with EMR, you can purchase a Saving Plan that matches the compute usage of your EMR cluster, and the discount will apply automatically. Keep in mind that Saving Plans require careful consideration of usage patterns. You should monitor your usage and adjust your Saving Plans as needed to ensure that you are getting the best possible savings.
+
+**- Transient Clusters vs. Long Running Clusters:** EMR clusters can be configured to run as either transient or long-running clusters. Transient clusters are created and terminated for a specific job or set of jobs, while long-running clusters are maintained for ongoing data processing tasks. Transient clusters can help save on costs by only running when needed, and can be terminated once the job is complete. Long-running clusters, on the other hand, can provide more predictable and consistent processing power but require ongoing maintenance costs.
+
+**- Instance Fleets:** The instance fleet configuration for Amazon EMR clusters lets you select a wide variety of provisioning options for Amazon EC2 instances, and helps you develop a flexible and elastic resourcing strategy for each node type in your cluster. In an instance fleet configuration, you specify a target capacity for On-Demand Instances and Spot Instances within each fleet. When Amazon EC2 reclaims a Spot Instance in a running cluster because of a price increase or instance failure, Amazon EMR tries to replace the instance with any of the instance types that you specify. This makes it easier to regain capacity during a spike in Spot pricing.
+
+**- Partitioning and File Compression on S3:** Partitioning your data on S3 can help optimize your EMR costs by reducing the amount of data read and processed during each query. This can be especially important for large datasets. File compression can also help reduce the amount of data read and processed during queries. Common compression formats include GZIP and snappy.
+
+
+
