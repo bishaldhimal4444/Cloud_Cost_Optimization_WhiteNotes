@@ -117,3 +117,32 @@ To effectively manage Amazon Q Business license costs, conduct regular audits of
 Amazon Q Developer Free Tier – Free. Individual developers can sign up and sign in using an email address with an AWS Builder ID to start using Amazon Q Developer within minutes. The Individual Tier provides code suggestions, reference tracking, security scans, and includes Amazon Q conversational coding.
 
 Amazon Q Developer Pro Tier - $19/mo. per user. Offers administrative capabilities to organizations that want to provide their developers with access to Amazon Q Developer. Administrators get organizational license management to centrally manage which developers in the organization should have access to Amazon Q Developer. They also get organizational policy management to set service policies at the organizational level, such as whether developers are allowed to receive code suggestions that might be similar to particular open-source training data.
+
+
+###### Amazon QuickSight
+
+Amazon Q brings its advanced generative AI technology to Amazon QuickSight, the AWS unified business intelligence (BI) service built for the cloud. With Amazon Q in QuickSight, customers get a Generative BI assistant that allows business analysts to use natural language to build BI dashboards in minutes and easily build visualizations and complex calculations. Additionally, business users can go beyond dashboard-delivered insights with multi-visual Q&A responses, get AI-driven executive summaries of dashboards, and create detailed and customizable data stories highlighting key insights, trends, and drivers.
+
+###### Amazon Connect
+
+In Amazon Connect, our contact center service, Amazon Q helps your customer service agents provide better customer service. Amazon Q in Connect uses the real-time conversation with the customer along with relevant company content to automatically recommend what to say or what actions an agent should take to better assist customers.
+
+## Note's:
+**1. A company wants to create a text summarization application, without provisioning infrastructure. They are missing ML OPs knowledge in the company. Which AWS service they should use?**
+- Amazon Bedrock
+
+**2. You want to create a customized model on Amazon Bedrock, that will include internal company datasets, which option will be the best fit for building this solution?**
+- Fine-tune a model (FM) on Amazon Bedrock
+
+**3. Bedrock pricing model is:**
+- Based on tokens and/or images
+
+**4. Your company is getting ready to launch a generative AI application build with Meta's Llama 2 chat 13B foundation model. You're now about to go into production and expect heavy user traffic. What is the most cost-effective way to ensure your users can access the application?**
+- Move to 6-month commitment for Provisioned Throughput
+
+**5. Your company has been using Amazon Q as an internal chat assistant for a few weeks with positive results. There are a set number of users that does not change but you notice the daily charges are increasing steadily. What is the most likely cause?**
+-  Users are adding documents to Amazon Q to create context for the Assistant
+
+**6. Your company is developing AI/ML products and will be increasing their Amazon SageMaker usage consistently for the next few years. What is the least effort solution to reduce SageMaker cost?**
+- Purchase SageMaker Savings Plans
+
