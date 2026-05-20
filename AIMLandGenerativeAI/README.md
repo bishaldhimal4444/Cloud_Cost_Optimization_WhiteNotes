@@ -65,7 +65,7 @@ You have a choice of two pricing plans for inference:
 - On-Demand: This mode allows you to use FMs on a pay-as-you-go basis without having to make any time-based term commitments for real-time and batch invocations.
 - Provisioned Throughput: This mode allows you to provision sufficient throughput to meet your application's performance requirements in exchange for a one/six months time-based term commitment.
 
-###### Model Customization
+##### Model Customization
 
 - Retrieval-Augmented Generation (RAG)
 ```
@@ -91,3 +91,29 @@ Supports unlabled, unstructured data
 Resulting model requires provisioned throughput (unless using Nova models)
 Supports frequently changing data
 ```
+
+###### Model Distallation
+Distallation uses a larger teacher model to train a smaller student model. The result is a customized model that is up to 500% faster, 75% less expensive than the original models with less than 2% accuracy loss for use cases like RAG. Customize a model with distallation in Amazon Bedrock.
+
+###### Prompt Caching
+When a prompt is sent to a model within 5 minutes of the same prompt being sent, it will be responded to from the cache instead of the model having the process the prompt. A successful prompt hit refreshes the 5 minute TTL on the cache. Prompt caching reduces costs by up to 90% and latency by up to 85% for supported models. Prompt Caching for faster model inference.
+
+###### Intelligent Prompt Routing (IPR)
+IPR automatically route prompts to different foundation models to optimize response quality and lower costs. It provides a single endpoint to efficiently route prompts and uses advanced prompt matching techniques to meet cost and latency thresholds. It reduces costs by up to 30%. Understanding Intelligent Prompt Routing.
+
+## 3. Amazon Q
+- **Amazon Q:** Amazon Q generates code, tests, debugs, and has multistep planning and reasoning capabilities that can transform and implement new code generated from developer requests. Amazon Q also makes it easier for employees to get answers to questions across business data—such as company policies, product information, business results, code base, employees, and many other topics—by connecting to enterprise data repositories to summarize the data logically, analyze trends, and engage in dialogue about the data.
+
+- **Amazon Q Business:** Amazon Q Business is a generative AI–powered assistant that can answer questions, provide summaries, generate content, and securely complete tasks based on data and information in your enterprise systems. It empowers employees to be more creative, data-driven, efficient, prepared, and productive.
+
+Amazon Q Business Lite - $3 per user/mo. The Amazon Q Business Lite subscription provides users access to basic functionality such as asking questions and receiving permission-aware responses.
+
+Amazon Q Business Pro - $20 per user/mo. The Amazon Q Business Pro subscription provides users access to the full suite of Amazon Q Business capabilities, including access to Amazon Q Apps, and Amazon Q in QuickSight (Reader Pro).
+
+To effectively manage Amazon Q Business license costs, conduct regular audits of user accounts to remove access for departed employees and reassess whether existing users need their current license type. Start all new users with the Lite license as the default option and only upgrade to Pro when the additional features are truly necessary. Since pricing is per-user, maintaining tight control over user provisioning and license allocation is essential for cost optimization.
+
+- **Amazon Q Developer:** Amazon Q Developer (AI Coding Assistant) assists developers and IT professionals with all their tasks—from coding, testing, and upgrading applications, to diagnosing errors, performing security scanning and fixes, and optimizing AWS resources. Amazon Q has advanced, multistep planning and reasoning capabilities that can transform (for example, perform Java version upgrades) and implement new features generated from developer requests.
+
+Amazon Q Developer Free Tier – Free. Individual developers can sign up and sign in using an email address with an AWS Builder ID to start using Amazon Q Developer within minutes. The Individual Tier provides code suggestions, reference tracking, security scans, and includes Amazon Q conversational coding.
+
+Amazon Q Developer Pro Tier - $19/mo. per user. Offers administrative capabilities to organizations that want to provide their developers with access to Amazon Q Developer. Administrators get organizational license management to centrally manage which developers in the organization should have access to Amazon Q Developer. They also get organizational policy management to set service policies at the organizational level, such as whether developers are allowed to receive code suggestions that might be similar to particular open-source training data.
