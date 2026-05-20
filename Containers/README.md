@@ -5,13 +5,10 @@ Cost monitoring and optimization for container-based architectures using Amazon 
 Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that eliminates the need to install, operate, and maintain your own Kubernetes control plane on AWS. Kubernetes is an open-source system that automates the management, scaling, and deployment of containerized applications.
 
 #### Terminology
-1. Node: A node may be a virtual or physical machine, depending on the cluster. Typically, you have several nodes in a cluster.
-
-2. Cluster: Combine several nodes to form a more powerful machine.
-
-3. Container: Each container that you run is repeatable; the standardization from having dependencies included means that you get the same behavior wherever you run it. Containers decouple applications from the underlying host infrastructure.
-
-4. Pod: One or more containers into a higher-level structure are called a pod. Any containers in the same pod will share the same resources and local network. Containers can easily communicate with other containers in the same pod as though they were on the same machine while maintaining a degree of isolation from others.
+- Node: A node may be a virtual or physical machine, depending on the cluster. Typically, you have several nodes in a cluster.
+- Cluster: Combine several nodes to form a more powerful machine.
+- Container: Each container that you run is repeatable; the standardization from having dependencies included means that you get the same behavior wherever you run it. Containers decouple applications from the underlying host infrastructure.
+- Pod: One or more containers into a higher-level structure are called a pod. Any containers in the same pod will share the same resources and local network. Containers can easily communicate with other containers in the same pod as though they were on the same machine while maintaining a degree of isolation from others.
 
 ###### Amazon EKS Pricing
 
