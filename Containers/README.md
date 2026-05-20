@@ -43,11 +43,11 @@ Amazon Elastic Container Service (Amazon ECS) is a highly scalable, high-perform
 Modern application (say Microservices) architecture recommends to split your applications into individual units, and Amazon ECS is optimized for this pattern. Tasks are the smallest unit of compute in Amazon ECS and allow you to define a set of containers you would like to place together, their properties, and how they may be linked. Tasks include all the information Amazon ECS needs to make the placement decision. To launch a single container, your task definition should only include one container definition.
 
 ###### Terminology
-**Container:** Provide a standard way to package your application’s code, configurations, and dependencies into a single object. Containers share an operating system installed on the server and run as resource-isolated processes, ensuring quick, reliable, and consistent deployments, regardless of environment.
+- **Container:** Provide a standard way to package your application’s code, configurations, and dependencies into a single object. Containers share an operating system installed on the server and run as resource-isolated processes, ensuring quick, reliable, and consistent deployments, regardless of environment.
 
-**Cluster:** A grouping of container instances.
+- **Cluster:** A grouping of container instances.
 
-**Task:** The instantiation of a task definition within a cluster. After you create a task definition for your application ECS, you can specify the number of tasks to run on your cluster. An ECS service runs and maintains your desired number of tasks simultaneously in a cluster.
+- **Task:** The instantiation of a task definition within a cluster. After you create a task definition for your application ECS, you can specify the number of tasks to run on your cluster. An ECS service runs and maintains your desired number of tasks simultaneously in a cluster.
 
 ###### Amazon ECS Pricing
 
