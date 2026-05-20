@@ -2,8 +2,8 @@
 Best practice guidance for monitoring and optimizing cost of commonly used core networking services and features.
 
 ### 1. Amazon VPC:
-**-	Gateway VPC endpoints:** Provide reliable connectivity to Amazon S3 or Amazon DynamoDB without requiring an internet gateway or a NAT device for your VPC. Gateway endpoints do not use AWS PrivateLink, unlike other types of VPC endpoints. There is no additional charge for using gateway endpoints.
-**-	Interface VPC endpoints:** You can use interface endpoints to privately and securely access AWS services, internal application services or SaaS services that are running outside of your VPC.
+- **Gateway VPC endpoints:** Provide reliable connectivity to Amazon S3 or Amazon DynamoDB without requiring an internet gateway or a NAT device for your VPC. Gateway endpoints do not use AWS PrivateLink, unlike other types of VPC endpoints. There is no additional charge for using gateway endpoints.
+- **Interface VPC endpoints:** You can use interface endpoints to privately and securely access AWS services, internal application services or SaaS services that are running outside of your VPC.
 
 ##### Amazon VPC Optimization Techniques
 -	For workloads within the same region, if your destination service is either S3 or DynamoDB, utilize Gateway endpoints if possible.
