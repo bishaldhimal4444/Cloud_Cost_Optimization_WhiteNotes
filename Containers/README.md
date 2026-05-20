@@ -28,7 +28,7 @@ You can use a single EKS cluster to run multiple applications by taking advantag
 If you are using Amazon EC2 (including with Amazon EKS managed node groups), you pay for AWS resources (e.g., EC2 instances, EBS volumes, Outposts capacity) you create to run your Kubernetes worker nodes. You only pay for what you use, as you use it; there are no minimum fees and no upfront commitments. See detailed pricing information on the Amazon EC2 pricing page and AWS Outposts rack pricing page.
 
 #### Amazon EKS Optimization Techniques
-**
+
 - Underutilized resources: Identify Low Utilization Amazon EC2 Instances, from AWS Trusted Advisor, consider stopping or terminating instances that have low utilization, or scale the number of instances by using Auto Scaling.
   
 - Tagging: Tag your EKS clusters and activate relevant tags for cost allocation. This will help you identify how your cost is spread across the different AWS services/resources (EKS, EC2, EBS, ELB, EFS and more). When using managed node groups, the EC2 instances created in the node group will be automatically tagged.
@@ -45,8 +45,7 @@ Right-size your EC2 nodes to fit the required capacity. The following tools can 
 - AWS Cost Explorer is a free tool that lets you dive deeper into your cost and usage data to identify trends, pinpoint cost drivers, and detect anomalies.
 ```
 AWS Compute Optimizer delivers actionable recommendations and also quantifies the cost impact of adopting these recommendations, so that you can prioritize your optimization efforts based on the size of the saving opportunity.
-- Modernization: Use latest generation family or AMD and Graviton for better price-performance.
+- Modernization: Use latest generation family or AMD and Graviton for better price-performance: Use latest generation family or AMD and Graviton for better price-performance.
 - Purchase Option Optimization (Spot & Savings Plans): You can save EC2 instances costs by covering your EC2 On-Demand costs with Savings Plans (for 24/7 usage), or using Spot instances for workloads that can tolerate interruptions.
-**
 
 
